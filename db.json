@@ -1,0 +1,36 @@
+{
+    "members": [
+        {
+            "pokemonName": "Leafeon",
+            "memberName": "이연지",
+            "mbti": "ENFP",
+            "pokemonNumber": "0470",
+            "about": "코딩이 즐거워질 때까지",
+            "goal": "네카쿠라배 안에 들어가는 개발자"
+        },
+        {
+            "pokemonName": "Charizard",
+            "memberName": "김준혁",
+            "mbti": "INTP",
+            "pokemonNumber": "0006",
+            "about": "즐겁게 함께 합시다",
+            "goal": "노력하며 성장하는 개발자되기"
+        },
+        {
+            "pokemonName": "Ditto",
+            "memberName": "권용수",
+            "mbti": "ISJT",
+            "pokemonNumber": "0132",
+            "about": "메타몽처럼",
+            "goal": "어제보다 성장한 개발자"
+        },
+        {
+            "pokemonName": "Psyduck",
+            "memberName": "남지훈",
+            "mbti": "INFJ",
+            "pokemonNumber": "0054",
+            "about": "아무것도 몰라요",
+            "goal": "개발로 돈벌기"
+        }
+    ]
+}

@@ -1,0 +1,548 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vm;
+    height: 100vh;
+    font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.background-wallpaper {
+    background-image: url("./assets/background.gif");
+    background-position: center center;
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-color: #121212;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+}
+
+.background-wallpaper.hide {
+    visibility: hidden;
+    z-index: -999;
+    opacity: 0;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+#app .add-member-btn {
+    border: 1px solid white;
+    outline: none;
+    height: 34px;
+    width: 100px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    bottom: 15%;
+}
+
+#app .add-member-btn:hover {
+    background-color: white;
+    color: #292929;
+}
+#app .register-form-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    border: 1px solid;
+    z-index: -999;
+    backdrop-filter: blur(30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#app .register-form-container.show {
+    z-index: 999;
+    visibility: visible;
+    opacity: 1;
+}
+
+#app .register-form-container form {
+    width: 700px;
+    height: 800px;
+    border: 4px solid white;
+    border-radius: 4px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#app .register-form-container form .form-btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#app .register-form-container form .form-btn-wrapper button{
+    width: 100px;
+    height: 34px;
+    margin: 0 1rem;
+    outline: none;
+    background-color: white;
+    border: 1px solid white;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#app .register-form-container form .choice-pokemon {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+#app .register-form-container form .choice-pokemon .choice-pokemon-item{
+    width: 150px;
+    height: 150px;
+}
+
+#app .register-form-container form .choice-pokemon .choice-pokemon-item:hover {
+    scale: 1.2;
+}
+
+#app .register-form-container form .choice-pokemon .choice-pokemon-item img{
+    width: 100%;
+    height: 100%;
+}
+
+#app .register-form-container form .input-wrapper {
+    width: 100%;
+}
+
+#app .register-form-container form label {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+#app .register-form-container form input {
+    width: 100%;
+    margin: 1rem 0;
+    padding: .5rem;
+    font-size: 1rem;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid lightgray;
+}
+
+#app h1 {
+    margin-top: 10rem;
+    color: #fff;
+    font-size: 4rem;
+    font-family: 'Black Han Sans', sans-serif;
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(to right,
+                #7953cd 20%,
+                #00affa 30%,
+                #0190cd 70%,
+                #764ada 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: textShine 3s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+#app .carousel-btn {
+    position: absolute;
+    bottom: 15%;
+    font-size: 2rem;
+    color: white;
+    z-index: 30;
+    cursor: pointer;
+}
+
+#app .carousel-btn.prev {
+    left: 35%;
+}
+
+#app .carousel-btn.next {
+    right: 35%;
+}
+
+#app h1 img {
+    width: 56px;
+    object-fit: contain;
+    margin: 1rem;
+}
+
+.list-container {
+    position: absolute    ;
+    display: flex;
+    left: 50%;
+    top: 45%;
+    transform: translate(-266px, -50%);
+    transition: all 1s ease-in-out;
+}
+
+li {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    margin-right: 1rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    z-index: 10;
+}
+
+li .pokeball, li .pokeball-open {
+    font-family: 'Archivo Black', sans-serif;
+    position: absolute;
+    color: white;
+}
+
+li .pokeball img,
+li .pokeball-open img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    transform: translateY(-10px);
+    animation: upAndDown 2.5s infinite alternate;
+}
+
+li .pokeball-open {
+    opacity: 0;
+    transform: translate(50%, 50%);
+    z-index: 10;
+}
+
+@keyframes upAndDown {
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+li .character {
+    position: absolute;
+    top: 5%;
+    left: 18%;
+    transform: translateY(100px);
+    opacity: 0;
+    z-index: 200;
+    transition: transform 1s ease;
+}
+
+li .character img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+li .frame {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    pointer-events: none;
+}
+
+.frame .text-container {
+    position: absolute;
+    bottom: 3%;
+    left: 25%;
+    right: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    z-index: 100;
+    flex-direction: column;
+    transform: translateY(0);
+    transition: transform .28s ease;
+}
+
+.frame .text-container .title {
+    font-family: 'Archivo Black', sans-serif;
+    color: white;
+    text-transform: uppercase;
+    font-size: 2vw;
+    line-height: 1;
+    opacity: 0;
+    position: relative;
+    transition: transform 1s ease;
+}
+
+.frame .text-container .title::after {
+    display: block;
+    margin: 7% auto 8% auto;
+    width: 100%;
+    height: 1px;
+    content: "";
+    background-color: #fff;
+    opacity: .5;
+    transform: scale(0);
+    transition: transform .15s;
+}
+
+.frame .text-container .subtitle {
+    color: white;
+    font-size: .9vw;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity .15s;
+}
+
+li::before {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    content: "";
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.1) 100%) no-repeat;
+    opacity: 0;
+    z-index: 20;
+    transition: opacity .2s ease;
+}
+
+li:hover .pokeball {
+    opacity: 0;
+}
+
+li:hover .pokeball-open {
+    opacity: 1;
+}
+
+li:hover .character {
+    z-index: 15;
+    opacity: 1;
+    transition-delay: .1s;
+    transform: translateY(0);
+}
+
+li:hover .text-container {
+    transform: translateY(-50%);
+
+    .title {
+        opacity: 1;
+
+        &::after {
+            transform: scale(1);
+            opacity: .5;
+            transition-delay: .15s;
+            transition-duration: .2s;
+        }
+    }
+
+    .subtitle {
+        opacity: .7;
+        transition-delay: .2s;
+        transition-duration: .2s;
+    }
+}
+
+.modal {
+    position: absolute;
+    width: 100vw;
+    top: 50%;
+    left: 50%;
+    height: 100vh;
+    z-index: -99;
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: transparent;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(25px);
+    display: none;
+}
+
+.modal-inner-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: -3rem;
+    right: -3rem;
+    border: 2px solid lightgray;
+    background-color: transparent;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.modal.show {
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-frame {
+    max-width: 600px;
+    height: 800px;
+    border: 4px solid rgba(255, 255, 255, 0.7);
+    position: relative;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.modal-content {
+    border: 1px solid;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 4px solid rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+}
+
+.modal-content .character {
+    width: 50%;
+    height: 50%;
+    margin-top: 3rem;
+}
+
+.modal-content .character img{
+    width: 100%;
+}
+
+.modal-content .character img.big {
+    width: 120%;
+}
+
+.modal-content .divide {
+    width: 80%;
+}
+
+.info {
+    margin-top: 1rem;
+    width: 80%;
+    height: 40%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.info .info-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.info .info-header p {
+    font-size: 1.8rem;
+}
+
+.info .info-header .name {
+
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.info .info-header .status {
+    display: flex;
+    margin-left: 1rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.info .info-header .status .ball {
+    width: 15px;
+    height: 15px;
+    margin-right: 0.1rem;
+}
+
+.info .info-header .status .ball img {
+    width: 100%;
+    height: 100%;
+}
+
+.info .info-header .mbti {
+    font-size: 1.2rem;
+    color: #292929;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 .6rem;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.info .info-content {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.info .info-content p{
+    margin-top: 2rem;
+}
